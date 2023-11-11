@@ -6,6 +6,7 @@ namespace App\Services\ExportImport;
 
 use App\Helpers\Uuid;
 use Aws\S3\Exception\S3Exception;
+use Generator;
 use RuntimeException;
 use Symfony\Component\Filesystem\Path;
 use Throwable;
@@ -19,6 +20,12 @@ final class GroupExporter extends AbstractExporter implements SendStatusInterfac
     private const ARCHIVE_FILENAME = 'export_group.zip';
     private const STORE_OBJECT_KEY_PREFIX = 'export_group_';
     private array $deferredFunctions = [];
+
+    public function __construct(
+        private readonly Export $exportService,
+    ) {
+    }
+
 
     public function export(): void
     {

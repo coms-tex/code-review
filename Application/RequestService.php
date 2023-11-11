@@ -14,29 +14,10 @@ class RequestService
     }
 
     /**
-     * @throws JsonException
-     * @throws ExceptionInterface
-     */
-    public function createMessageSetTestsExternal(array $tasks, Agent $agent): string
-    {
-        $message = new MessageSetTestsRequestDto();
-        $message->tasks = $tasks;
-
-        return $this->sendMessage(
-            $message,
-            $agent->getInstance(),
-            AgentRequestMethod::ALIAS_SET_TESTS,
-            MessageType::EXTERNAL->value,
-            MessageDirection::REQUEST->value,
-            $agent->getUuid(),
-        );
-    }
-
-    /**
      * @throws Exception
      * @throws ExceptionInterface
      */
-    public function createMessageSetConfigExternal($agent, ?string $parentRequestUuid = null): string {
+    public function createMessageSetConfigExternal($agent): string {
         $messageRequestDto = new MessageSetConfigRequestDto();
         $messageRequestDto->sendInterval = $agent->getSendInterval();
         $messageRequestDto->fastPoolSize = $agent->getFastPoolSize();
@@ -54,25 +35,6 @@ class RequestService
         );
 
         return $requestUuid;
-    }
-
-    /**
-     * @throws Exception
-     * @throws ExceptionInterface
-     */
-    public function createMessageRemoveTestExternal(array $tasks, mixed $agent): string
-    {
-        $messageRemoveTestDto = new MessageRemoveTestRequestDto();
-        $messageRemoveTestDto->tasks = $tasks;
-
-        return $this->sendMessage(
-            $messageRemoveTestDto,
-            $agent->getInstance(),
-            AgentRequestMethod::ALIAS_REMOVE_TEST,
-            MessageType::EXTERNAL->value,
-            MessageDirection::REQUEST->value,
-            $agent->getUuid()
-        );
     }
 
     // another code...
