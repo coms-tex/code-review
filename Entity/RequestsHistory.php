@@ -7,7 +7,7 @@ namespace App\Services\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-#[ORM\Entity(repositoryClass: SomeRepository::class)]
+#[ORM\Entity(repositoryClass: RequestsHistoryRepository::class)]
 class RequestsHistory
 {
     public const DIRECTION_REQUEST = 'request';
