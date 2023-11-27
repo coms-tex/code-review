@@ -10,8 +10,7 @@ use Doctrine\Common\Collections\Collection;
 #[ORM\Entity(repositoryClass: SomeRepository::class)]
 class RequestsHistory
 {
-    public const DIRECTION_REQUEST = 'request'
-    ;
+    public const DIRECTION_REQUEST = 'request';
     public const DIRECTION_RESPONSE = 'response';
     public const ALIAS_SETUP = 'setup';
     public const ALIAS_DISCONNECT = 'disconnect';
