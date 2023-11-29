@@ -12,7 +12,7 @@ class RequestsHistoryRepository
         $requests = [];
 
         foreach ($this->entityManager->findBy(['request_id' => $requestId]) as $request) {
-            $tags = $this->tagsRepository->findOne(['request_id' => $requestId]);
+            $tags = $this->tagsRepository->findByRequest(['request_id' => $request->getId()]);
             $request->setTags($tags);
             $requests[] = $request;
         }
